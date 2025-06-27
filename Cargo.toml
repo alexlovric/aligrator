@@ -9,7 +9,7 @@ repository = "https://github.com/alexlovric/aligrator"
 documentation = "https://docs.rs/aligrator"
 readme = "README.md"
 keywords = ["integration", "ode", "runge-kutta"]
-categories = ["science", "mathematics", "simulation", "physics", "engineering"]
+categories = ["science", "mathematics", "simulation"]
 
 [lib]
 name = "aligrator"
