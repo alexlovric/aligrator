@@ -1,0 +1,21 @@
+[package]
+name = "aligrator"
+description = "A lightweight numerical integration library."
+authors = ["Aleksander Lovric <alexlovric@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/alexlovric/aligrator"
+documentation = "https://docs.rs/aligrator"
+readme = "README.md"
+keywords = ["integration", "numerical integration", "ode", "differential equations", "runge-kutta", "euler", "adaptive time-stepping", "ivp"]
+categories = ["science", "mathematics", "simulation", "physics", "engineering"]
+
+[lib]
+name = "aligrator"
+path = "src/lib.rs"
+test = true
+doctest = false
+
+[dependencies]
+

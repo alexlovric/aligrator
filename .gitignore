@@ -1,0 +1,7 @@
+target
+**/*.venv
+**/*.csv
+**/*.png
+**/*__pycache__
+**/*.pyc
+**/*.py
