@@ -8,7 +8,7 @@ license = "MIT"
 repository = "https://github.com/alexlovric/aligrator"
 documentation = "https://docs.rs/aligrator"
 readme = "README.md"
-keywords = ["integration", "ode", "differential equations", "runge-kutta"]
+keywords = ["integration", "ode", "runge-kutta"]
 categories = ["science", "mathematics", "simulation", "physics", "engineering"]
 
 [lib]
