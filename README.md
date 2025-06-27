@@ -50,6 +50,12 @@ let (times, positions, _) = integrate(&mut integrator, &mut ShoAccel, x0, xdot0,
 - Solves the IVP from `t0` to `tf`.
 - Returns time points, positions, and velocities (not used here).
 
+The response should look like this:
+![Response](examples/response.png)
+
+If we check the accuracy, its consistent with what we expect from this integrator:
+![Order](examples/order.png)
+
 ### 6. Run the Example
 Build and run the example with:
 ```sh
