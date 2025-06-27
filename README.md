@@ -41,7 +41,6 @@ let mut integrator = Rk89::new(dt, None); // Adaptive disabled (second argument)
 ```
 - Here we use the high-order Runge-Kutta 8/9 method.
 - For adaptive time-stepping, pass `Some(AdaptiveDt::new(Some(1e-6), None, None))` as the second argument. Here the first argument is tolerance, the second is minimum time step, and the third is maximum time step.
-- You can switch to other integrators (see commented lines in the example).
 
 ### 4. Integrate the System
 ```rust
@@ -49,6 +48,7 @@ let (times, positions, _) = integrate(&mut integrator, &mut ShoAccel, x0, xdot0,
 ```
 - Solves the IVP from `t0` to `tf`.
 - Returns time points, positions, and velocities (not used here).
+- Here we use the integrate function to manage the looping, but you can easily just call the integrator.step(...) in your own integration loop.
 
 The response should look like this:
 ![Response](examples/response.png)
