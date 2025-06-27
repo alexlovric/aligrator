@@ -1,4 +1,5 @@
 # Aligrator
+[![Build & Test](https://github.com/alexlovric/aligrator/actions/workflows/build&test.yml/badge.svg?branch=main)](https://github.com/alexlovric/aligrator/actions/workflows/build&test.yml)
 
 A lightweight, dependency-free Rust library for numerical integration of ordinary differential equations (ODEs). Supports multiple Runge-Kutta multistage integrators and is easily extensible.
 
