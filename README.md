@@ -10,21 +10,26 @@ A lightweight, dependency-free Rust library for numerical integration of ordinar
 
 ## Example: Solving a Simple Harmonic Oscillator
 
-This example demonstrates how to use Aligrator to solve the initial value problem (IVP) for a simple harmonic oscillator (SHO):
+This example demonstrates how to use Aligrator to solve the initial value problem (IVP) for a simple 1D harmonic oscillator (SHO) with equation of motion:
+$$
+x''(t) + \omega^2x(t) = 0
+$$
 
 ### 1. Define the ODE System
 ```rust
-struct ShoAccel;
+/// Simple Harmonic Oscillator (SHO) implementation.
+struct SimpleHarmonicOscillator {
+    omega: f64,
+}
 
-impl IvpFunction<1> for ShoAccel {
+impl IvpFunction<1> for SimpleHarmonicOscillator {
     fn compute(&mut self, t: &f64, x: &[f64; 1], xdot: &[f64; 1]) -> [f64; 1] {
-        let omega: f64 = 1.0;
-        [-omega.powi(2) * x[0]]
+        // x''(t) = -ω²x(t)
+        [-self.omega.powi(2) * x[0]]
     }
 }
 ```
-- `ShoAccel` defines the SHO's acceleration as a function of position.
-- Implements `IvpFunction<1>` for a 1D system.
+- Note: Aligrator requires that you implement the `IvpFunction` trait for your ODE system.
 
 ### 2. Set Initial Conditions
 ```rust
@@ -44,11 +49,18 @@ let mut integrator = Rk89::new(dt, None); // Adaptive disabled (second argument)
 
 ### 4. Integrate the System
 ```rust
-let (times, positions, _) = integrate(&mut integrator, &mut ShoAccel, x0, xdot0, t0, tf);
+let (times, positions, _) = integrate(
+    &mut integrator,
+    &mut SimpleHarmonicOscillator { omega: 1.0 },
+    x0,
+    xdot0,
+    t0,
+    tf,
+);
 ```
 - Solves the IVP from `t0` to `tf`.
 - Returns time points, positions, and velocities (not used here).
-- Here we use the integrate function to manage the looping, but you can easily just call the integrator.step(...) in your own integration loop.
+- Here we use the integrate function to manage the looping, but you can easily just call the `integrator.step(...)` in your own integration loop.
 
 The response should look like this:
 ![Response](examples/response.png)

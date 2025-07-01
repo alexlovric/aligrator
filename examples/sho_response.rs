@@ -1,19 +1,28 @@
 #![allow(unused_imports)]
 
 use std::fs::File;
-use std::io::{BufWriter, Write, Result};
+use std::io::{BufWriter, Result, Write};
 
 use aligrator::adaptive_stepping::AdaptiveDt;
 use aligrator::runge_kutta::{Rk4, Rk45, Rk89};
 use aligrator::{integrate, Integrator, IvpFunction};
 
-// Simple Harmonic Oscillator IVP definition
-struct ShoAccel;
+/// Simple Harmonic Oscillator (SHO) implementation.
+///
+/// This implements the equation of motion for a simple harmonic oscillator:
+///     x''(t) + ω²x(t) = 0
+///
+/// Where:
+/// - x(t) is the displacement from equilibrium at time t
+/// - ω is the angular frequency of oscillation (ω = 2πf, where f is the frequency)
+/// - x''(t) is the second time derivative of x (acceleration)
+struct SimpleHarmonicOscillator {
+    omega: f64,
+}
 
-impl IvpFunction<1> for ShoAccel {
+impl IvpFunction<1> for SimpleHarmonicOscillator {
     fn compute(&mut self, _: &f64, x: &[f64; 1], _: &[f64; 1]) -> [f64; 1] {
-        let omega: f64 = 1.0;
-        [-omega.powi(2) * x[0]]
+        [-self.omega.powi(2) * x[0]]
     }
 }
 
@@ -32,7 +41,14 @@ fn main() -> Result<()> {
     let mut integrator = Rk89::new(dt, None);
     // let mut integrator = Rk89::new(dt, Some(AdaptiveDt::new(Some(1e-6), None, None)));
 
-    let (times, positions, _) = integrate(&mut integrator, &mut ShoAccel, x0, xdot0, t0, tf);
+    let (times, positions, _) = integrate(
+        &mut integrator,
+        &mut SimpleHarmonicOscillator { omega: 1.0 },
+        x0,
+        xdot0,
+        t0,
+        tf,
+    );
 
     // Write out data
     let file = File::create("sho_response.csv")?;
