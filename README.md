@@ -11,9 +11,9 @@ A lightweight, dependency-free Rust library for numerical integration of ordinar
 ## Example: Solving a Simple Harmonic Oscillator
 
 This example demonstrates how to use Aligrator to solve the initial value problem (IVP) for a simple 1D harmonic oscillator (SHO) with equation of motion:
-$$
+```math
 x''(t) + \omega^2x(t) = 0
-$$
+```
 
 ### 1. Define the ODE System
 ```rust
