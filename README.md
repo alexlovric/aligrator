@@ -75,4 +75,12 @@ cargo run --example sho_response
 ```
 
 ## License
-MIT
+MIT License - See [LICENSE](LICENSE) for details.
+
+## Support
+If you'd like to support the project consider:
+- Identifying the features you'd like to see implemented or bugs you'd like to fix and open an issue.
+- Contributing to the code by resolving existing issues, I'm happy to have you.
+- Donating to help me continue development, [Buy Me a Coffee](https://coff.ee/alexlovric)
+
+[![Buy Me a Coffee](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-FFDD00?style=flat&logo=buy-me-a-coffee&logoColor=black)](https://coff.ee/alexlovric)
